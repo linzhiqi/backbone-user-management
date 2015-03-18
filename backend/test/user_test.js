@@ -50,4 +50,17 @@ describe('User tests', function() {
         users.length.should.equal(1);
       });
   });
+
+    it('should add roles to User', function() {
+    var usr = new models.User();
+    usr.addRoles('a');
+    usr.roles.length.should.equal(1);
+    usr.roles.should.contain('a');
+    usr.addRoles('a', 'b');
+    usr.roles.length.should.equal(2);
+    usr.roles.should.contain('b');
+    usr.addRoles(['c', 'd']);
+    usr.roles.length.should.equal(4);
+    usr.roles.should.contain('d');
+  });
 });

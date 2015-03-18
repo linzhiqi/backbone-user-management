@@ -48,11 +48,10 @@ var User = serverbone.models.ACLModel.extend({
       var options = {statusCode: 400, description: 'Bad Request'};
       var error = new serverbone.errors.BaseError(errmsg, options);
       return error;
-    }
-    
+    }   
     this.set('password', hashed);
     return User.__super__.save.call(this, key, val, options);
-  }
+  },
 
   /**
    * addRoles
@@ -65,7 +64,12 @@ var User = serverbone.models.ACLModel.extend({
    * addRoles('b', 'c') -> adds roles 'b' & 'c'
    * addRoles(['c', 'd', 'e']) -> adds roles 'd' & 'e'
    */
-
+  addRoles: function(roles) {
+    if(arguments.length>1) {
+      roles = Array.prototype.slice.call(arguments);
+    }
+    User.__super__.addRoles.call(this,roles);
+  }
 
 
 });
