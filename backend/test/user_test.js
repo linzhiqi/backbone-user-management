@@ -2,6 +2,7 @@ var models = require('../models');
 var collections = require('../collections');
 var should = require('chai').should();
 var serverbone = require('serverbone');
+var assert = require('chai').assert;
 
 describe('User tests', function() {
   var user;
@@ -51,7 +52,7 @@ describe('User tests', function() {
       });
   });
 
-    it('should add roles to User', function() {
+  it('should add roles to User', function() {
     var usr = new models.User();
     usr.addRoles('a');
     usr.roles.length.should.equal(1);
@@ -63,4 +64,34 @@ describe('User tests', function() {
     usr.roles.length.should.equal(4);
     usr.roles.should.contain('d');
   });
+
+  it('create user with existed username should return 409 Conflict error', function() {
+    var users = new collections.Users();
+    users.create({
+      username: 'foouser', 
+      password: 'supersecRet',
+      description: 'hello world'
+    }, null)
+    .then(function(model){
+      assert.ok(false, 'should not succeed');
+    }, function(err){
+      err.should.to.be.an.instanceof(serverbone.errors.BaseError);
+    });
+  });
+
+  it('create user with new username should succeed', function() {
+    var users = new collections.Users();
+     users.create({
+      username: 'foouser1', 
+      password: 'supersecRet',
+      description: 'hello world'
+    }, null)
+    .then(function(model){
+      assert.ok(true, 'should succeed');
+      users.length.should.equal(2);
+    }, function(err){
+      assert.ok(false, 'should not fail');
+    });
+  });
+
 });
