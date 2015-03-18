@@ -19,6 +19,12 @@ var schema = {
       type: 'array',
       default: []
     }
+  },
+  defaultProjectionOptions: {
+    projection: {
+      onlyFields: ['id', 'username', 'roles']
+    },
+    recursive: true
   }
 };
 

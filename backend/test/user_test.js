@@ -3,6 +3,7 @@ var collections = require('../collections');
 var should = require('chai').should();
 var serverbone = require('serverbone');
 var assert = require('chai').assert;
+var expect = require('chai').expect;
 
 describe('User tests', function() {
   var user;
@@ -94,4 +95,12 @@ describe('User tests', function() {
     });
   });
 
+  it('password should not be included in the toJSON() output', function() {
+    return user
+      .fetch()
+      .then(function() {
+        expect(user.toJSON()['password']).to.exist;
+        expect(user.toJSON(user.schema.defaultProjectionOptions)['password']).not.to.exist;
+      });
+  });
 });
