@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-framework="backbonejs">
+	<head>
+		<meta charset="utf-8">
+		<title>EveryPlay JS Assignment</title>
+		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="css/jumbotron-narrow.css">
+		<link rel="stylesheet" href="css/app.css">
+	</head>
+	<body>
+		<div class="container">
+			
+			<div class="header clearfix">
+					<h3 class="text-muted">EveryPlay JS Assignment</h3>
+			</div>
+			<div class="jumbotron">
+				<h1 >User Admin Panel</h1>
+			</div>
+			<div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Username</th>
+							<th>Password</th>
+							<th>Roles</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="footer">
+					<p>Written by <a href="https://github.com/linzhiqi">Zhiqi Lin</a>, css template is powered by <a href="http://getbootstrap.com/examples/jumbotron-narrow/">jumbotron-narrow</a></p>
+			</div>
+		</div>
+		<script type="text/template" class="user-template">
+			<td class="col-sm-3"><span class="username"><%= username %></span></td>
+			<td class="col-sm-3"><span class="password">********</span></td>
+			<td class="col-sm-3"><span class="roles"><%= roles %></span></td>
+			<td class="col-sm-3">
+			<button class="btn btn-warning edit-user">Edit</button>
+			<button class="btn btn-success update-user" style="display:none">Update</button>
+			<button class="btn btn-danger cancel" style="display:none">Cancel</button>
+			</td>
+		</script>
+
+		<script src="node_modules/jquery/dist/jquery.js"></script>
+		<script src="js/vendor/jquery.color-2.1.2.js"></script>
+		<script src="node_modules/underscore/underscore.js"></script>
+		<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="node_modules/backbone/backbone.js"></script>
+		<script src="js/models/user.js"></script>
+		<script src="js/collections/users.js"></script>
+		<script src="js/views/user-view.js"></script>
+		<script src="js/views/user-collection-view.js"></script>
+		<script src="js/views/create-user-view.js"></script>
+		<script src="js/app.js"></script>
+		
+	</body>
+</html>

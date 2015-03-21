@@ -1,0 +1,11 @@
+.form-group p.help-block{
+	font-size: medium;
+	clear: both;
+	margin-bottom: 0;
+}
+
+p.help-block{
+	color: red;
+	font-size: medium;
+	clear: both;
+}
