@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var serverbone = require('serverbone');
+var cors = require('cors');
 var collections = require('./collections');
 var config = require('./config');
 
@@ -9,6 +10,7 @@ var usersResource = new serverbone.resources.Resource('users', {
 });
 
 var app = express();
+app.use(cors());
 app.use(bodyParser());
 app.use('/users', usersResource.app);
 
