@@ -187,16 +187,12 @@ describe("User model", function() {
 		})
 	})
 	describe("Persistence", function() {
-		beforeEach(function() {
-			this.user = new app.User();
-			this.save_stub = sinon.stub(this.user, "save");
-		})
-		afterEach(function() {
-			this.save_stub.restore();
-		})
 		it("set() does not trigger save()", function() {
-			this.user.set('password', 'supersecret');
-			this.save_stub.callCount.should.equal(0);
+			var user = new app.User();
+			var save_stub = sinon.stub(user, "save");
+			user.set('password', 'supersecret');
+			save_stub.callCount.should.equal(0);
+			save_stub.restore();
 		})
 	})
 })

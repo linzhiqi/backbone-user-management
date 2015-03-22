@@ -35,16 +35,18 @@ describe("Create User View", function() {
 	})
 	describe("correct input", function(){
 		var view, server, responseBody;
-		beforeEach(function(){
+		before(function(){
 			server = sinon.fakeServer.create();
 			responseBody = '{"id": 1,"username": "nameee","roles": ["admin","ceo"]}';
 			server.respondWith(
 				"POST",
-				"/users",
+				app.User.prototype.url(),
 				[
 					200,
 					{
-						"Content-Type": "application/json"
+						"Content-Type": "application/json",
+						"Access-Control-Allow-Origin": "*",
+						"Content-Length": 55
 					},
 					responseBody
 				]
@@ -56,18 +58,16 @@ describe("Create User View", function() {
 			view.$el.find('input#password').val("supersecret");
 			view.$el.find('input#roles').val("admin,ceo");
 			view.$el.find('button#addUserBtn').click();
-			;
-		})
-		afterEach(function() {
+		})	
+		after(function(){
 			app.CreateUserView.prototype.hideErrors.restore();
 			server.restore();
 		})
+
 		it("should trigger hideErrors()", function(){
 			server.requests[0].method.should.equal("POST");
-			//the respond() will screw up everything, pollute other test cases even in different files
-			//don't know why
-			//server.respond()
-			//app.CreateUserView.prototype.hideErrors.should.have.been.calledOnce;
+			server.respond();
+			app.CreateUserView.prototype.hideErrors.should.have.been.calledOnce;
 		})
 	})
 })

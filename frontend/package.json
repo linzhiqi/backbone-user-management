@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "karma start karma.config.js",
     "start": "http-server -a localhost -p 8000 -c-1"
   },
   "author": "zhiqi lin",
@@ -18,6 +18,11 @@
   "devDependencies": {
     "chai": "^2.1.2",
     "http-server": "^0.8.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-junit-reporter": "^0.2.2",
+    "karma-mocha": "^0.1.10",
     "mocha": "^2.2.1"
   }
 }
