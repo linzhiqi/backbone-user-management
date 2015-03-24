@@ -26,7 +26,14 @@ Make sure passwords (and other non-public properties) are not sent. _Hint_: chec
 Make a simple frontend app: 'admin' GUI for the previously built backend using [BackboneJS](http://backbonejs.org/) or [React](http://facebook.github.io/react/) or both. With the app, you should be able to create new users and list created users.
 
 # Screenshots
+Backend unit test
 ![Backend unit test](https://raw.github.com/linzhiqi/backbone-user-management/master/readme-img/backend-unit-test.png)
+
+Frontend unit test
 ![Frontend unit test](https://raw.github.com/linzhiqi/backbone-user-management/master/readme-img/frontend-unit-test.png)
+
+Form input validation error
 ![Form input validation error](https://raw.github.com/linzhiqi/backbone-user-management/master/readme-img/validation-error.png)
+
+Error message from api
 ![Error message from api](https://raw.github.com/linzhiqi/backbone-user-management/master/readme-img/error-from-api.png)
