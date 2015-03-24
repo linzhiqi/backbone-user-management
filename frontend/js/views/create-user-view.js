@@ -50,7 +50,6 @@ var app = app || {};
 			var me = this;
 			var options = {
 			    success: function (model) {
-			    	console.log("on success");
 			    	app.users.add(model,{justAdded: true});
 			        me.$el.find('#username').val('');
 					me.$el.find('#password').val('');
@@ -58,7 +57,6 @@ var app = app || {};
 					me.hideErrors();
 			    },
 			    error: function (model, response) {
-			    	console.log("on error:" + JSON.stringify(response));
 			    	me.showErrors([{attrName: 'other', message: jQuery.parseJSON(response['responseText']).error}]);
 			    }
 			};
